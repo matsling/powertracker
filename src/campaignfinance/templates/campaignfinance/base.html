@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Campaign finance information for San Angelo">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ page_title|default:"Campaign Finance" }}{% endblock title %}</title>
+    <link rel="icon" type="image/png" href="{% static 'campaignfinance/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'campaignfinance/style.css' %}" type="text/css">
+</head>
+<body>
+    <header>
+        <div class="branding-line">
+            <div class="branding-child">
+                <h1>
+                    <a href="{% url 'campaignfinance:homepageindex' %}">San Angelo Politics</a>
+                </h1>
+            </div>
+            <div class="branding-child">
+                <h2>
+                    <a href="{% url 'campaignfinance:homepageindex' %}">Campaign Finance</a>
+                </h2>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li onclick="location.href='{% url 'campaignfinance:campaignindex' %}';">
+                    <a href="{% url 'campaignfinance:campaignindex' %}">Campaigns</a>
+                </li>
+                <li onclick="location.href='{% url 'campaignfinance:transactionindex' %}';">
+                    <a href="{% url 'campaignfinance:transactionindex' %}">Raising & Spending</a>
+                </li>
+                <li onclick="location.href='{% url 'campaignfinance:entityindex' %}';">
+                    <a href="{% url 'campaignfinance:entityindex' %}">People & Organizations</a>
+                </li>
+                <li onclick="location.href='{% url 'campaignfinance:glossaryindex' %}';">
+                    <a href="{% url 'campaignfinance:glossaryindex' %}">Glossary</a>
+                </li>
+            </ul>
+        </nav>
+        <div>
+            <button type="button" id="menu-toggle" class="menu-toggle">Menu</button>
+            <ul id="menu-table" class="menu-table">
+                <li><a href="{% url 'campaignfinance:campaignindex' %}">Campaigns</a></li>
+                <li><a href="{% url 'campaignfinance:transactionindex' %}">Contributions</a></li>
+                <li><a href="{% url 'campaignfinance:transactionindex' %}">Spending</a></li>
+                <li><a href="{% url 'campaignfinance:entityindex' %}">People & Organizations</a></li>
+                <li><a href="{% url 'campaignfinance:glossaryindex' %}">Glossary</a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <data>
+            {% block content %}
+            {% endblock %}
+        </data>
+    </main>
+    <div class="spacer"></div>
+    <footer>
+        <p>A <a href='https://texasmuckraker.substack.com'>Texas Muckraker</a> project. &copy;</p>
+        <p>Powered by <a href='https://www.github.com/texasmuckraker/powertracker'>Powertracker</a></p>
+    </footer>
+    <script src="{% static 'campaignfinance/script.js' %}"></script>
+</body>
+</html>

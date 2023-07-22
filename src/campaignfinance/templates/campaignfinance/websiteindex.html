@@ -1,0 +1,27 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Websites{% endblock title %}
+
+{% block content %}
+<h3>Websites</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Website address</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if website_list %}
+            {% for website in website_list %}
+            <tr onclick="location.href='{% url 'campaignfinance:websitedetail' website.uuid %}';">
+                <td>{{ website.address }}</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

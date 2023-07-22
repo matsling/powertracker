@@ -1,0 +1,73 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Reported Totals{% endblock title %}
+
+{% block content %}
+<h3>Reported Totals</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <div class="detail-field-row">
+            <div class="detail-field-label">Source Document</div>
+            <div class="detail-field-data">
+                <a href="{% url 'campaignfinance:documentdetail' reportedtotals.document.uuid %}">
+                    {{ reportedtotals.document }}
+                </a>
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Reporting Campaign / Individual</div>
+            <div class="detail-field-data">
+                <a href="{% url 'campaignfinance:entitydetail' reportedtotals.document.filer_entity.uuid %}">
+                    {{ reportedtotals.document.filer_entity }}
+                </a>
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Reporting period start date</div>
+            <div class="detail-field-data">
+                {{ reportedtotals.document.coverage_start_date }}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Reporting period end date</div>
+            <div class="detail-field-data">
+                {{ reportedtotals.document.coverage_end_date }}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Total unitemized contributions</div>
+            <div class="detail-field-data">
+                {{ reportedtotals.unitemized_contributions }}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Total contributions</div>
+            <div class="detail-field-data">
+                {{ reportedtotals.contributions }}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Total unitemized expenditures</div>
+            <div class="detail-field-data">
+                {{ reportedtotals.unitemized_expenditures }}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Total expenditures</div>
+            <div class="detail-field-data">
+                {{ reportedtotals.expenditures }}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Total maintained contributions at the end of reporting period</div>
+            <div class="detail-field-data">
+                {{ reportedtotals.maintained_contributions }}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Total outstanding principal on loans</div>
+            <div class="detail-field-data">{{ reportedtotals.principal_outstanding_loans }}</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

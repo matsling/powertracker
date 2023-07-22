@@ -1,0 +1,58 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Office - {{ office }}{% endblock title %}
+
+{% block content %}
+<h3>Office</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <div class="detail-field-row">
+            <div class="detail-field-label">Name</div>
+            <div class="detail-field-data">{{ office }}</div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Government / Jurisdiction</div>
+            <div class="detail-field-data">{{ office.government_entity }}</div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Current Holder</div>
+            <div class="detail-field-data">
+                {% if office.holder_entity %}
+                    {{ office.holder_entity }}
+                {% endif %}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label"></div>
+            <div class="detail-field-data"></div>
+        </div>
+    </div>
+</div>
+<h3>Notes</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <p>{{ office.notes }}</p>
+    </div>
+</div>
+<h3>Former Office Holders</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if office.office_former_holders.exists %}
+            {% for former_office_holder in office.office_former_holders.all %}
+                <tr onclick="location.href='{% url 'campaignfinance:entitydetail' former_office_holder.entity.uuid %}';">
+                    <td>{{ former_office_holder.entity }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

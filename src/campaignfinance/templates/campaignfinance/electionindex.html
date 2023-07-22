@@ -1,0 +1,59 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Elections{% endblock title %}
+
+{% block content %}
+<h3>Elections</h3>
+<div class="filter-options-row">
+    <form class="category-select" method="GET" action="{% url 'campaignfinance:electionindex' %}">
+        <select name="category" id="category-select">
+        {% for name, value in filter_categories.items %}
+            <option value="{{ name }}" {% if name == request.GET.category %}selected{% endif %}>{{ name }}</option> 
+        {% endfor %}
+        </select>
+        {% if request.GET.sortby %}
+            <input type="hidden" name="sortby" value="{{ request.GET.sortby }}">
+        {% endif %}
+    </form>
+    <form class="sort-select" method="GET" action="{% url 'campaignfinance:electionindex' %}">
+        <select name="sortby" id="sortby-select">
+            {% for name, value in sort_by_fields.items %}
+            <option value="{{ name }}" {% if name == request.GET.sortby %}selected{% endif %}>{{ name }}</option>
+            {% endfor %}
+        </select>
+        {% if request.GET.category %}
+            <input type="hidden" name="category" value="{{ request.GET.category }}">
+        {% endif %}
+    </form>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>Date of Election</th>
+            <th>Government</th>
+            <th>Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if election_list %}
+            {% for election in election_list %}
+                <tr onclick="location.href='{% url 'campaignfinance:electiondetail' election.uuid %}';">
+                    <td>{{ election.date }}</td>
+                    {% if election.government_entity %}
+                        <td>{{ election.government_entity }}</td>
+                    {% else %}
+                        <td></td>
+                    {% endif %}
+                    <td>{{ election.category }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+                <td></td>
+                <td></td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

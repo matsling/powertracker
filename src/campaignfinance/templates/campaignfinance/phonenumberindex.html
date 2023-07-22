@@ -1,0 +1,46 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Phone Numbers{% endblock title %}
+
+{% block content %}
+<h3>Phone Numbers</h3>
+<div class="filter-options-row">
+    <form class="sort-select" method="GET" action="{% url 'campaignfinance:phonenumberindex' %}">
+        <select name="sortby" id="sortby-select">
+            {% for name, value in sort_by_fields.items %}
+            <option value="{{ name }}" {% if name == request.GET.sortby %}selected{% endif %}>{{ name }}</option>
+            {% endfor %}
+        </select>
+        {% if request.GET.category %}
+            <input type="hidden" name="category" value="{{ request.GET.category }}">
+        {% endif %}
+    </form>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>Phone Number</th>
+            <th>Owner</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if phone_number_list %}
+            {% for phone_number in phone_number_list %}
+            <tr onclick="location.href='{% url 'campaignfinance:phonenumberdetail' phone_number.uuid %}';">
+                <td>{{ phone_number }}</td>
+                <td>
+                    {% if phone_number.owner %}
+                        {{ phone_number.owner }}
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+                <td></td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

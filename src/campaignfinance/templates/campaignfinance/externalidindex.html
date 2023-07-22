@@ -1,0 +1,33 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}External Agency IDs{% endblock title %}
+
+{% block content %}
+<h3>External Agency IDs</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Reporting Agency</th>
+            <th>Individual / Organization</th>
+            <th>ID Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if external_id_list %}
+            {% for external_id in external_id_list %}
+            <tr onclick="location.href='{% url 'campaignfinance:externaliddetail' external_id.uuid %}';">
+                <td>{{ external_id.parent_entity }}</td>
+                <td>{{ external_id.child_entity }}</td>
+                <td>{{ external_id }}</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+                <td></td>
+                <td></td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

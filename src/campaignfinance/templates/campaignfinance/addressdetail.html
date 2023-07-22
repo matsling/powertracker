@@ -1,0 +1,93 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Address - {{ address.category }}{% endblock title %}
+
+{% block content %}
+<h3>Address</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        {% if address.category.name == 'po box' %}
+            <div class="detail-field-row">
+                <div class="detail-field-label">P.O. Box</div>
+                <div class="detail-field-data">{{ address.building_number }}</div>
+            </div>
+        {% else %}
+            <div class="detail-field-row">
+                <div class="detail-field-label">Street Address</div>
+                <div class="detail-field-data">{{ address.building_number }} {{ address.street_name }}</div>
+            </div>
+            <div class="detail-field-row">
+                <div class="detail-field-label">Unit/Apt #</div>
+                <div class="detail-field-data">{{ address.unit_number }}</div>
+            </div>
+            <div class="detail-field-row">
+                <div class="detail-field-label">Floor</div>
+                <div class="detail-field-data">{{ address.floor_number }}</div>
+            </div>
+        {% endif %}
+            <div class="detail-field-row">
+                <div class="detail-field-label">City</div>
+                <div class="detail-field-data">{{ address.city_name }}</div>
+            </div>
+            <div class="detail-field-row">
+                <div class="detail-field-label">State</div>
+                <div class="detail-field-data">{{ address.state_name }}</div>
+            </div>
+            <div class="detail-field-row">
+                <div class="detail-field-label">Zip Code</div>
+                <div class="detail-field-data">{{ address.zip_code }}{% if address.zip_code_extension %}-{{ address.zip_code_extension }}{% endif %}</div>
+            </div>
+            <div class="detail-field-row">
+                <div class="detail-field-label">County</div>
+                <div class="detail-field-data">{{ address.county_name }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<h3>Notes</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <p>{{ address.notes }}</p>
+    </div>
+</div>
+<h3>Residents</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if address.residents.exists %}
+            {% for resident in address.residents.all %}
+                <tr onclick="location.href='{% url 'campaignfinance:entitydetail' resident.uuid %}';">
+                    <td>{{ resident }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+<h3>Owners</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+    {% if address.owners.exists %}
+        {% for owner in address.owners.all %}
+            <tr onclick="location.href='{% url 'campaignfinance:entitydetail' owner.uuid %}';">
+                <td>{{ owner }}</td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+            <td>No data found.</td>
+        </tr>
+    {% endif %}
+    </table>
+{% endblock %}

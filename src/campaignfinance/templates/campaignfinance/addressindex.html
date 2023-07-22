@@ -1,0 +1,65 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Addresses{% endblock title %}
+
+{% block content %}
+<h3>Addresses</h3>
+<div class="filter-options-row">
+    <form class="category-select" method="GET" action="{% url 'campaignfinance:addressindex' %}">
+        <select name="category" id="category-select">
+        {% for name, value in filter_categories.items %}
+            <option value="{{ name }}" {% if name == request.GET.category %}selected{% endif %}>{{ name }}</option> 
+        {% endfor %}
+        </select>
+        {% if request.GET.sortby %}
+            <input type="hidden" name="sortby" value="{{ request.GET.sortby }}">
+        {% endif %}
+    </form>
+    <form class="sort-select" method="GET" action="{% url 'campaignfinance:addressindex' %}">
+        <select name="sortby" id="sortby-select">
+            {% for name, value in sort_by_fields.items %}
+            <option value="{{ name }}" {% if name == request.GET.sortby %}selected{% endif %}>{{ name }}</option>
+            {% endfor %}
+        </select>
+        {% if request.GET.category %}
+            <input type="hidden" name="category" value="{{ request.GET.category }}">
+        {% endif %}
+    </form>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>Street Address</th>
+            <th>Unit/Apt #</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip Code</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if address_list %}
+            {% for address in address_list %}
+            <tr onclick="location.href='{% url 'campaignfinance:addressdetail' address.uuid %}';">
+                {% if address.category.name == 'po box' %}
+                    <td>P.O. Box {{ address.building_number }}</td>
+                {% else %}
+                    <td>{{ address.building_number }} {{ address.street_name }}</td>
+                {% endif %}
+                <td>{{ address.unit_number }}</td>
+                <td>{{ address.city_name }}</td>
+                <td>{{ address.state_name }}</td>
+                <td>{{ address.zip_code }}{% if address.zip_code_extension %}-{{ address.zip_code_extension }}{% endif %}</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

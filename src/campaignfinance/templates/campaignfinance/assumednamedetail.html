@@ -1,0 +1,42 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Assumed Name - {{ assumedname }}{% endblock title %}
+
+{% block content %}
+<h3>Assumed Name</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <div class="detail-field-row">
+            <div class="detail-field-label">Name</div>
+            <div class="detail-field-data">{{ assumedname }}</div>
+        </div>
+    </div>
+</div>
+<h3>Notes</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <p>{{ assumedname.notes }}</p>
+    </div>
+</div>
+<h3>Related People & Organizations</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% if assumedname.associated_entities.exists %}
+        {% for entity in assumedname.associated_entities.all %}
+            <tr onclick="location.href='{% url 'campaignfinance:entitydetail' entity.uuid %}';">
+                <td>{{ entity }}</td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+            <td>No data found.</td>
+        </tr>
+    {% endif %}
+    </tbody>
+</table>
+{% endblock %}

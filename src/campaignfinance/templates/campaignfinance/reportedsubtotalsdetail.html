@@ -1,0 +1,129 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Subtotals{% endblock title %}
+
+{% block content %}
+<h3>Reported Subtotals</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <div class="detail-field-row">
+            <div class="detail-field-label">Source Document</div>
+            <div class="detail-field-data">
+                <a href="{% url 'campaignfinance:documentdetail' reportedsubtotals.document.uuid %}">
+                    {{ reportedsubtotals.document }}
+                </a>
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Reporing Campaign / Individual</div>
+            <div class="detail-field-data">
+                <a href="{% url 'campaignfinance:entitydetail' reportedsubtotals.document.filer_entity.uuid %}">
+                    {{ reportedsubtotals.document.filer_entity }}
+                </a>
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Reporting period start</div>
+            <div class="detail-field-data">
+                {{ reportedsubtotals.document.coverage_start_date }}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Reporting period end</div>
+            <div class="detail-field-data">
+                {{ reportedsubtotals.document.coverage_end_date }}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Monetary political contributions</div>
+            <div class="detail-field-data">
+                {{ reportedsubtotals.monetary_political_contributions }}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Non monetary political contributions</div>
+            <div class="detail-field-data">
+                {{ reportedsubtotals.non_monetary_political_contributions }}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Pledged contributions</div>
+            <div class="detail-field-data">
+                {{ reportedsubtotals.pledged_contributions }}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Monetary contributions from corporations or labor unions</div>
+            <div class="detail-field-data">
+                {{ reportedsubtotals.monetary_corporate_labor_contributions }}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Non monetary contributions from corporations or labor unions</div>
+            <div class="detail-field-data">
+                {{ reportedsubtotals.non_monetary_corporate_labor_contributions }}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Pledged contributions from corporations or labor unions</div>
+            <div class="detail-field-data">
+                {{ reportedsubtotals.pledged_corporate_labor_contributions }}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Loans</div>
+            <div class="detail-field-data">
+                {{ reportedsubtotals.loans }}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Expendiatures from political contributions</div>
+            <div class="detail-field-data">
+                {{ reportedsubtotals.expenditures_from_contributions }}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Unpaid incurred obligations</div>
+            <div class="detail-field-data">
+                {{ reportedsubtotals.unpaid_incurred_obligations }}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Investments purchased with political contributions</div>
+            <div class="detail-field-data">
+                {{ reportedsubtotals.purchased_investments_with_contributions }}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Credit card expenditures</div>
+            <div class="detail-field-data">
+                {{ reportedsubtotals.expenditures_credit_card }}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Expenditures from personal funds</div>
+            <div class="detail-field-data">
+                {{ reportedsubtotals.expenditures_personal_funds }}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Expenditures from political contributions to candidate's business</div>
+            <div class="detail-field-data">
+                {{ reportedsubtotals.expenditures_from_contributions_candidate_business }}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Non political expenditures made from political contributions</div>
+            <div class="detail-field-data">
+                {{ reportedsubtotals.expenditures_non_political_from_contributions }}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Interest, credits, gains, refunds, and contributions returned to filer</div>
+            <div class="detail-field-data">
+                {{ reportedsubtotals.interest_credit_gains_refunds_contributions_returned }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

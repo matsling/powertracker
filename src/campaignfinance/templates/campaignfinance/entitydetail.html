@@ -1,0 +1,365 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}{{ entity.category }} - {{ entity }}{% endblock title %}
+
+{% block content %}
+<h3>{{ entity.category }}</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <div class="detail-field-row">
+            <div class="detail-field-label">Name</div>
+            <div class="detail-field-data">{{ entity.prefix }} {{ entity }}</div>
+        </div>
+        {% if entity.category.name == "individual" %}
+            <div class="detail-field-row">
+                <div class="detail-field-label">Nickname</div>
+                <div class="detail-field-data">{{ entity.nickname }}</div>
+            </div>
+            <div class="detail-field-row">
+                <div class="detail-field-label">Occupation</div>
+                <div class="detail-field-data">{{ entity.occupation }}</div>
+            </div>
+        {% endif %}
+        <div class="detail-field-row">
+            <div class="detail-field-label">Industry</div>
+            <div class="detail-field-data">
+                {% if entity.industry %}
+                    {{ entity.industry }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<h3>Notes</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <p>{{ entity.notes }}</p>
+    </div>
+</div>
+<h3>Contributions & Payments</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Recipient</th>
+            <th>Date</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if entity.entity_payer_transactions.exists %}
+            {% for transaction in entity.entity_payer_transactions.all %}
+                <tr onclick="location.href='{% url 'campaignfinance:transactiondetail' transaction.uuid %}';">
+                    <td>{{ transaction.category }}</td>
+                    <td>{{ transaction.payee_entity }}</td>
+                    <td>{{ transaction.recorded_date }}</td>
+                    <td>${{ transaction.amount }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+<h3>Contributions & Payments Received</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Payer</th>
+            <th>Date</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if entity.entity_payee_transactions.exists %}
+            {% for transaction in entity.entity_payee_transactions.all %}
+                <tr onclick="location.href='{% url 'campaignfinance:transactiondetail' transaction.uuid %}';">
+                    <td>{{ transaction.category }}</td>
+                    <td>{{ transaction.payer_entity }}</td>
+                    <td>{{ transaction.recorded_date }}</td>
+                    <td>${{ transaction.amount }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+<h3>Campaigns</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Date Registered</th>
+            <th>Government</th>
+            <th>Office Sought</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if entity.entity_candidate_campaigns.exists %}
+            {% for campaign in entity.entity_candidate_campaigns.all %}
+                <tr onclick="location.href='{% url 'campaignfinance:campaigndetail' campaign.uuid %}';">
+                    <td>{{ campaign }}</td>
+                    <td>{{ campaign.registration_date }}</td>
+                    <td>{{ campaign.government_entity }}</td>
+                    <td>{{ campaign.office_sought }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+<h3>Current Offices Held</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Government</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if entity.entity_holder_offices.exists %}
+            {% for office in entity.entity_holder_offices.all %}
+                <tr onclick="location.href='{% url 'campaignfinance:officedetail' office.uuid %}';">
+                    <td>{{ office }}</td>
+                    <td>{{ office.government_entity }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+                <td></td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+<h3>Former Offices Held</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Government</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if entity.entity_former_offices.exists %}
+            {% for former_office_holder in entity.entity_former_offices.all %}
+                <tr onclick="location.href='{% url 'campaignfinance:formerofficeholderindex' %}';">
+                    <td>{{ former_office_holder.office }}</td>
+                    <td>{{ former_office_holder.office.government_entity }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+                <td></td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+<h3>Relationships</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Individual / Organization</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if entity.entity_parent_relationships.exists %}
+            {% for relationship in entity.entity_parent_relationships.all %}
+                <tr onclick="location.href='{% url 'campaignfinance:relationshipdetail' relationship.uuid %}';">
+                    <td>{{ relationship.category }}</td>
+                    <td>{{ relationship.child_entity }}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        {% if entity.entity_child_relationships.exists %}
+            {% for relationship in entity.entity_child_relationships.all %}
+            <tr onclick="location.href='{% url 'campaignfinance:relationshipdetail' relationship.uuid %}';">
+                <td>{{ relationship.category }}</td>
+                <td>{{ relationship.parent_entity }}</td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+    </tbody>
+</table>
+<h3>Residencies</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Street Address</th>
+            <th>Unit/Apt #</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip Code</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if entity.entity_residences.exists %}
+            {% for address in entity.entity_residences.all %}
+            <tr onclick="location.href='{% url 'campaignfinance:addressdetail' address.uuid %}';">
+                {% if address.category == 'po box' %}
+                    <td>P.O. Box {{ address.building_number }}</td>
+                {% else %}
+                    <td>{{ address.building_number }} {{ address.street_name }}</td>
+                {% endif %}
+                <td>{{ address.unit_number }}</td>
+                <td>{{ address.city_name }}</td>
+                <td>{{ address.state_name }}</td>
+                <td>{{ address.zip_code }}{% if address.zip_code_extension %}-{{ address.zip_code_extension }}{% endif %}</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+<h3>Property Ownership</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Street Address</th>
+            <th>Unit/Apt #</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip Code</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if entity.entity_owners.exists %}
+            {% for address in entity.entity_owners.all %}
+            <tr onclick="location.href='{% url 'campaignfinance:addressdetail' address.uuid %}';">
+                {% if address.category == 'po box' %}
+                    <td>P.O. Box {{ address.building_number }}</td>
+                {% else %}
+                    <td>{{ address.building_number }} {{ address.street_name }}</td>
+                {% endif %}
+                <td>{{ address.unit_number }}</td>
+                <td>{{ address.city_name }}</td>
+                <td>{{ address.state_name }}</td>
+                <td>{{ address.zip_code }}{% if address.zip_code_extension %}-{{ address.zip_code_extension }}{% endif %}</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+<h3>Email Addresses</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Email Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if entity.entity_email_owners.exists %}
+            {% for email in entity.entity_email_owners.all %}
+            <tr onclick="location.href='{% url 'campaignfinance:emaildetail' email.uuid %}';">
+                <td>{{ email }}</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+<h3>Phone Numbers</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Phone Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if entity.entity_phone_number_owners.exists %}
+            {% for phone_number in entity.entity_phone_number_owners.all %}
+                <tr onclick="location.href='{% url 'campaignfinance:phonenumberdetail' phone_number.uuid %}';">
+                    <td>{{ phone_number }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+<h3>Websites</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Website Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if entity.entity_website_owners.exists %}
+            {% for website in entity.entity_website_owners.all %}
+                <tr onclick="location.href='{% url 'campaignfinance:websitedetail' website.uuid %}';">
+                    <td>{{ website }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+<h3>Government Agency IDs</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Agency</th>
+            <th>ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if entity.entity_child_ids.exists %}
+            {% for external_id in entity.entity_child_ids.all %}
+                <tr onclick="location.href='{% url 'campaignfinance:externaliddetail' external_id.uuid %}';">
+                    <td>{{ external_id.parent_entity }}</td>
+                    <td>{{ external_id }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+                <td></td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

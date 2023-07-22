@@ -1,0 +1,60 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Website - {{ website }}{% endblock title %}
+
+{% block content %}
+<h3>Website</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <div class="detail-field-row">
+            <div class="detail-field-label">Website Address</div>
+            <div class="detail-field-data">{{ website }}</div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Owner</div>
+            <div class="detail-field-data">
+                {% if website.owner %}
+                    <a href="{% url 'campaignfinance:entitydetail' website.owner.uuid %}">
+                        {{ website.owner }}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label"></div>
+            <div class="detail-field-data"></div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label"></div>
+            <div class="detail-field-data"></div>
+        </div>
+    </div>
+</div>
+<h3>Notes</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <p>{{ website.notes }}</p>
+    </div>
+</div>
+<h3>Associated Individuals & Organizations</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if website.associated_entities.exists %}
+            {% for entity in website.associated_entities.all %}
+                <tr onclick="location.href='{% url 'campaignfinance:entitydetail' entity.uuid %}';">
+                    <td>{{ entity }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

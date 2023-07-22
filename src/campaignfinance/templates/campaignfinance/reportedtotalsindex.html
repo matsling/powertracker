@@ -1,0 +1,27 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Reported Totals{% endblock title %}
+
+{% block content %}
+<h3>Reported Totals</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Source Document</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if reported_totals_list %}
+            {% for reported_totals in reported_totals_list %}
+            <tr onclick="location.href='{% url 'campaignfinance:reportedtotalsdetail' reported_totals.uuid %}';">
+                <td>{{ reported_totals.document }}</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

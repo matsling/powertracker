@@ -1,0 +1,14 @@
+TODO for the next version
+    -Pre populate the lists for states and counties
+    -pre populate the list of country codes
+    -when office holder field is updated, added to former office holders automatically
+    -create table for campaign finance violation types, automatically flag when detected
+    -add a gender drop down field for entities
+    -manage.py command that will prepopulate database with types and location info
+    -election results
+    -links to opencorporates
+    -sorting of index pages
+    -full text searching
+    -document management app
+    -links to little sis
+    -auto flagging of illegal contributions

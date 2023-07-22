@@ -1,0 +1,41 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Campaign Finance{% endblock title %}
+
+{% block content %}
+
+<h3>Latest Campaign Contributions</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Payer</th>
+            <th>Recipient</th>
+            <th>Date</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if transaction_list %}
+            {% for transaction in transaction_list %}
+            <tr onclick="location.href='{% url 'campaignfinance:transactiondetail' transaction.uuid %}';">
+                <td>{{ transaction.category }}</td>
+                <td>{{ transaction.payer_entity }}</td>
+                <td>{{ transaction.payee_entity }}</td>
+                <td>{{ transaction.recorded_date }}</td>
+                <td>${{ transaction.amount }}</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}External ID - {{ externalid }}{% endblock title %}
+
+{% block content %}
+<h3></h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <div class="detail-field-row">
+            <div class="detail-field-label">External Reporting Agency</div>
+            <div class="detail-field-data">
+                <a href="{% url 'campaignfinance:entitydetail' externalid.parent_entity.uuid %}">
+                    {{ externalid.parent_entity.last_name }}
+                </a>
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Individual / Organization</div>
+            <div class="detail-field-data">
+                <a href="{% url 'campaignfinance:entitydetail' externalid.child_entity.uuid %}">
+                    {{ externalid.child_entity }}
+                </a>
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">ID</div>
+            <div class="detail-field-data">{{ externalid }}</div>
+        </div>
+    </div>
+</div>
+<h3>Notes</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <p>{{ externalid.notes }}</p>
+    </div>
+</div>
+{% endblock content %}

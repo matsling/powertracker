@@ -1,0 +1,29 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Relationship - {{ relationship.category }}{% endblock title %}
+
+{% block content %}
+<h3>Relationship</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <div class="detail-field-row">
+            <div class="detail-field-label">Type</div>
+            <div class="detail-field-data">{{ relationship.category }}</div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Party One</div>
+            <div class="detail-field-data">{{ relationship.parent_entity }}</div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Party Two</div>
+            <div class="detail-field-data">{{ relationship.child_entity }}</div>
+        </div>
+    </div>
+</div>
+<h3>Notes</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <p>{{ relationship.notes }}</p>
+    </div>
+</div>
+{% endblock %}

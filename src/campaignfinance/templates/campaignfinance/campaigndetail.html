@@ -1,0 +1,147 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Campaign - {{ campaign }}{% endblock title %}
+
+{% block content %}
+<h3>Campaign</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <div class="detail-field-row">
+            <div class="detail-field-label">Campaign Name</div>
+            <div class="detail-field-data">{{ campaign }}</div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Registration Date</div>
+            <div class="detail-field-data">{{ campaign.registration_date }}</div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Campaign Type</div>
+            <div class="detail-field-data">{{ campaign.category.name }}</div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Candidate</div>
+            <div class="detail-field-data">
+                {% if campaign.candidate_entity %}
+                    <a href="{% url 'campaignfinance:entitydetail' campaign.candidate_entity.uuid %}">
+                        {{ campaign.candidate_entity }}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Campaign Treasurer</div>
+            <div class="detail-field-data">
+                {% if campaign.treasurer_entity %}
+                    <a href="{% url 'campaignfinance:entitydetail' campaign.treasurer_entity.uuid %}">
+                        {{ campaign.treasurer_entity }}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Campaign Committee</div>
+            <div class="detail-field-data">
+                {% if campaign.committee_entity %}
+                    <a href="{% url 'campaignfinance:entitydetail' campaign.committee_entity.uuid %}">
+                        {{ campaign.committee_entity }}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Office Sought</div>
+            <div class="detail-field-data">
+                {% if campaign.office_sought %}
+                    <a href="{% url 'campaignfinance:officedetail' campaign.office_sought.uuid %}">
+                        {{ campaign.office_sought }}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<h3>Notes</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <p>{{ campaign.notes }}</p>
+    </div>
+</div>
+<h3>Elections</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Election Date</th>
+            <th>Election Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if campaign.election_campaigns.exists %}
+            {% for election in campaign.election_campaigns.all %}
+                <tr onclick="location.href='{% url 'campaignfinance:electiondetail' election.uuid %}';">
+                    <td>{{ election.date }}</td>
+                    <td>{{ election.category }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+                <td></td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+<h3>Received Contributions</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Contributor</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% if campaign.committee_entity.entity_payee_transactions.exists %}
+        {% for contribution in campaign.committee_entity.entity_payee_transactions.all %}
+            <tr onclick="location.href='{% url 'campaignfinance:transactiondetail' contribution.uuid %}';">
+                <td>{{ contribution.recorded_date }}</td>
+                <td>{{ contribution.payer_entity }}</td>
+                <td>${{ contribution.amount }}</td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+            <td>No data found.</td>
+            <td></td>
+            <td></td>
+        </tr>
+    {% endif %}
+    </tbody>
+</table>
+<h3>Expenditures</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Recipient</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% if campaign.committee_entity.entity_payer_transactions.exists %}
+        {% for expenditure in campaign.committee_entity.entity_payer_transactions.all %}
+            <tr onclick="location.href='{% url 'campaignfinance:transactiondetail' expenditure.uuid %}';">
+                <td>{{ expenditure.recorded_date }}</td>
+                <td>{{ expenditure.payee_entity }}</td>
+                <td>${{ expenditure.amount }}</td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+            <td>No data found.</td>
+            <td></td>
+            <td></td>
+        </tr>
+    {% endif %}
+    </tbody>
+</table>
+{% endblock %}

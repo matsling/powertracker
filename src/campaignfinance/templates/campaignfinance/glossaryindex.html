@@ -1,0 +1,89 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Glossary{% endblock title %}
+
+{% block content %}
+<h3>Data Types</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Explanation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr onclick="location.href='{% url 'campaignfinance:addressindex' %}';">
+            <td><a href="{% url 'campaignfinance:addressindex' %}">Addresses</a></td>
+            <td>Addresses of candidates, contributors, etc. from source documents.</td>
+        </tr>
+        <tr onclick="location.href='{% url 'campaignfinance:assumednameindex' %}';">
+            <td><a href="{% url 'campaignfinance:assumednameindex' %}">Assumed Names</a></td>
+            <td>Assumed names are titles of businesses and partnerships that may not be incorporated.</td>
+        </tr>
+        <tr onclick="location.href='{% url 'campaignfinance:campaignindex' %}';">
+            <td><a href="{% url 'campaignfinance:campaignindex' %}">Campaigns</a></td>
+            <td>Political campaigns for candidates or ballot initiatives.</td>
+        </tr>
+        <tr onclick="location.href='{% url 'campaignfinance:documentindex' %}';">
+            <td><a href="{% url 'campaignfinance:documentindex' %}">Documents</a></td>
+            <td>Source documents from which data is pulled.</td>
+        </tr>
+        <tr onclick="location.href='{% url 'campaignfinance:electionindex' %}';">
+            <td><a href="{% url 'campaignfinance:electionindex' %}">Elections</a></td>
+            <td>List of elections for different jurisdiction.</td>
+        </tr>
+        <tr onclick="location.href='{% url 'campaignfinance:emailindex' %}';">
+            <td><a href="{% url 'campaignfinance:emailindex' %}">Email Addresses</a></td>
+            <td>Emails from source documents.</td>
+        </tr>
+        <tr onclick="location.href='{% url 'campaignfinance:entityindex' %}';">
+            <td><a href="{% url 'campaignfinance:entityindex' %}">Entities</a></td>
+            <td>Any individual, corporation, government, or other organization.</td>
+        </tr>
+        <tr onclick="location.href='{% url 'campaignfinance:externalidindex' %}';">
+            <td><a href="{% url 'campaignfinance:externalidindex' %}">External IDs</a></td>
+            <td>IDs that have been assigned by an external agency like TEC or the IRS.</td>
+        </tr>
+        <tr onclick="location.href='{% url 'campaignfinance:formerofficeholderindex' %}';">
+            <td><a href="{% url 'campaignfinance:formerofficeholderindex' %}">Former Office Holders</a></td>
+            <td>A list of former office holders and the office they held.</td>
+        </tr>
+        <tr onclick="location.href='{% url 'campaignfinance:industryindex' %}';">
+            <td><a href="{% url 'campaignfinance:industryindex' %}">Industries</a></td>
+            <td>Specific categories of industry.</td>
+        </tr>
+        <tr onclick="location.href='{% url 'campaignfinance:industrysectorindex' %}';">
+            <td><a href="{% url 'campaignfinance:industrysectorindex' %}">Industry Sectors</a></td>
+            <td>Broad categories of industries.</td>
+        </tr>
+        <tr onclick="location.href='{% url 'campaignfinance:officeindex' %}';">
+            <td><a href="{% url 'campaignfinance:officeindex' %}">Offices</a></td>
+            <td>Government offices like mayors and council members.</td>
+        </tr>
+        <tr onclick="location.href='{% url 'campaignfinance:phonenumberindex' %}';">
+            <td><a href="{% url 'campaignfinance:phonenumberindex' %}">Phone Numbers</a></td>
+            <td>Phone numbers from source documents.</td>
+        </tr>
+        <tr onclick="location.href='{% url 'campaignfinance:relationshipindex' %}';">
+            <td><a href="{% url 'campaignfinance:relationshipindex' %}">Relationships</a></td>
+            <td>Relationships between people & organizations like spouses or employers.</td>
+        </tr>
+        <tr onclick="location.href='{% url 'campaignfinance:reportedsubtotalsindex' %}';">
+            <td><a href="{% url 'campaignfinance:reportedsubtotalsindex' %}">Reported Subtotals</a></td>
+            <td>Reported monetary and expenditure subtotals broken out by type from source documents.</td>
+        </tr>
+        <tr onclick="location.href='{% url 'campaignfinance:reportedtotalsindex' %}';">
+            <td><a href="{% url 'campaignfinance:reportedtotalsindex' %}">Reported Totals</a></td>
+            <td>Reported monetary and expenditure totals from source documents.</td>
+        </tr>
+        <tr onclick="location.href='{% url 'campaignfinance:transactionindex' %}';">
+            <td><a href="{% url 'campaignfinance:transactionindex' %}">Transactions</a></td>
+            <td>Money given to and spent by a campaign.</td>
+        </tr>
+        <tr onclick="location.href='{% url 'campaignfinance:websiteindex' %}';">
+            <td><a href="{% url 'campaignfinance:websiteindex' %}">Websites</a></td>
+            <td>Websites of candidates, campaigns, and organizations.</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

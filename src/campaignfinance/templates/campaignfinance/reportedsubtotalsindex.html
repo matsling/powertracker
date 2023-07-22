@@ -1,0 +1,27 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Reported Subtotals{% endblock title %}
+
+{% block content %}
+<h3>Reported Subtotals</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Source Document</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if reported_subtotals_list %}
+            {% for reported_subtotals in reported_subtotals_list %}
+            <tr onclick="location.href='{% url 'campaignfinance:reportedsubtotalsdetail' reported_subtotals.uuid %}';">
+                <td>{{ reported_subtotals.document }}</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

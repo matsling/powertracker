@@ -1,0 +1,29 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Industries{% endblock title %}
+
+{% block content %}
+<h3>Industries</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Industry</th>
+            <th>Sector</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if industry_list %}
+            {% for industry in industry_list %}
+            <tr>
+                <td>{{ industry }}</td>
+                <td>{{ industry.sector }}</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

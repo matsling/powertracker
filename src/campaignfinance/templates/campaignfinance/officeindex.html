@@ -1,0 +1,47 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Offices{% endblock title %}
+
+{% block content %}
+<h3>Offices</h3>
+<div class="filter-options-row">
+    <form class="sort-select" method="GET" action="{% url 'campaignfinance:officeindex' %}">
+        <select name="sortby" id="sortby-select">
+            {% for name, value in sort_by_fields.items %}
+            <option value="{{ name }}" {% if name == request.GET.sortby %}selected{% endif %}>{{ name }}</option>
+            {% endfor %}
+        </select>
+        {% if request.GET.category %}
+            <input type="hidden" name="category" value="{{ request.GET.category }}">
+        {% endif %}
+    </form>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Government</th>
+            <th>Current Office holder</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if office_list %}
+            {% for office in office_list %}
+            <tr onclick="location.href='{% url 'campaignfinance:officedetail' office.uuid %}';">
+                <td>{{ office }}</td>
+                <td>{{ office.government_entity }}</td>
+                {% if office.holder_entity %}
+                    <td>{{ office.holder_entity }}</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+                <td></td>
+                <td></td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

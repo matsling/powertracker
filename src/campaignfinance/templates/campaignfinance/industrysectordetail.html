@@ -1,0 +1,36 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Sector - {{ industrysector }}{% endblock title %}
+
+{% block content %}
+<h3>Industrial Sector</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <div class="detail-field-row">
+            <div class="detail-field-label">Sector</div>
+            <div class="detail-field-data">{{ industrysector }}</div>
+        </div>
+    </div>
+</div>
+<h3>Child Industries</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Industry</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if industrysector.sector_industries.exists %}
+            {% for industry in industrysector.sector_industries.all %}
+                <tr>
+                    <td>{{ industry }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

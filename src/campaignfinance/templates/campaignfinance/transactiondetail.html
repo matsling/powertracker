@@ -1,0 +1,65 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Transaction - {{ transaction.category }}{% endblock title %}
+
+{% block content %}
+<h3>Transaction</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <div class="detail-field-row">
+            <div class="detail-field-label">Type</div>
+            <div class="detail-field-data">{{ transaction.category }}</div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Campaign</div>
+            <div class="detail-field-data">
+                <a href="{% url 'campaignfinance:campaigndetail' transaction.campaign.uuid %}">
+                    {{ transaction.campaign }}
+                </a>
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Payer</div>
+            <div class="detail-field-data">
+                <a href="{% url 'campaignfinance:entitydetail' transaction.payer_entity.uuid %}">
+                    {{ transaction.payer_entity }}
+                </a>
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Recipient</div>
+            <div class="detail-field-data">
+                <a href="{% url 'campaignfinance:entitydetail' transaction.payee_entity.uuid %}">
+                    {{ transaction.payee_entity }}
+                </a>
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Amount</div>
+            <div class="detail-field-data">${{ transaction.amount }}</div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Date</div>
+            <div class="detail-field-data">{{ transaction.recorded_date }}</div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Reason</div>
+            <div class="detail-field-data">{{ transaction.reason }}</div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Source Document</div>
+            <div class="detail-field-data">
+                <a href="{% url 'campaignfinance:documentdetail' transaction.document.uuid %}">
+                    {{ transaction.document }}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<h3>Notes</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <p>{{ transaction.notes }}</p>
+    </div>
+</div>
+{% endblock %}

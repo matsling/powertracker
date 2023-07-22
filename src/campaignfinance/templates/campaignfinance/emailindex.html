@@ -1,0 +1,39 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Emails{% endblock title %}
+
+{% block content %}
+<h3>Email Addresses</h3>
+<div class="filter-options-row">
+    <form class="sort-select" method="GET" action="{% url 'campaignfinance:emailindex' %}">
+        <select name="sortby" id="sortby-select">
+            {% for name, value in sort_by_fields.items %}
+            <option value="{{ name }}" {% if name == request.GET.sortby %}selected{% endif %}>{{ name }}</option>
+            {% endfor %}
+        </select>
+    </form>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>Email address</th>
+            <th>Owner</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if email_list %}
+            {% for email in email_list %}
+            <tr onclick="location.href='{% url 'campaignfinance:emaildetail' email.uuid %}';">
+                <td>{{ email.address }}</td>
+                <td>{{ email.owner }}</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+                <td></td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

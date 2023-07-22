@@ -1,0 +1,55 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Documents{% endblock title %}
+
+{% block content %}
+<h3>Documents</h3>
+<div class="filter-options-row">
+    <form class="sort-select" method="GET" action="{% url 'campaignfinance:documentindex' %}">
+        <select name="sortby" id="sortby-select">
+            {% for name, value in sort_by_fields.items %}
+            <option value="{{ name }}" {% if name == request.GET.sortby %}selected{% endif %}>{{ name }}</option>
+            {% endfor %}
+        </select>
+    </form>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Filer</th>
+            <th>Date Filed</th>
+            <th>Type</th>
+            <th>Coverage Start</th>
+            <th>Coverage End</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if document_list %}
+            {% for document in document_list %}
+            <tr onclick="location.href='{% url 'campaignfinance:documentdetail' document.uuid %}';">
+                <td>{{ document }}</td>
+                {% if document.filer_entity %}
+                    <td>{{ document.filer_entity }}</td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+                <td>{{ document.date_filed }}</td>
+                <td>{{ document.category.name }}</td>
+                <td>{{ document.coverage_start_date }}</td>
+                <td>{{ document.coverage_end_date }}</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

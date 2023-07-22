@@ -1,0 +1,50 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Email - {{ email }}{% endblock title %}
+
+{% block content %}
+<h3>Email</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <div class="detail-field-row">
+            <div class="detail-field-label">Email Address</div>
+            <div class="detail-field-data">{{ email }}</div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Owner</div>
+            <div class="detail-field-data">
+                {% if email.owner %}
+                    {{ email.owner }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<h3>Notes</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <p>{{ email.notes }}</p>
+    </div>
+</div>
+<h3>Related People & Organizations</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if email.associated_entities.exists %}
+            {% for entity in email.associated_entities.all %}
+                <tr onclick="location.href='{% url 'campaignfinance:entitydetail' entity.uuid %}';">
+                    <td>{{ entity }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

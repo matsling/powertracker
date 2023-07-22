@@ -1,0 +1,26 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Assumed Names{% endblock title %}
+
+{% block content %}
+<h3>Assumed Names</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Assumed Name</th>
+        </tr>
+    <tbody>
+        {% if assumed_name_list %}
+            {% for assumed_name in assumed_name_list %}
+            <tr onclick="location.href='{% url 'campaignfinance:assumednamedetail' assumed_name.uuid %}';">
+                <td>{{ assumed_name.assumed_name }}</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

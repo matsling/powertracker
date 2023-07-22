@@ -1,0 +1,87 @@
+# Save the output of this file and use kubectl create -f to import
+# it into Kubernetes.
+#
+# Created with podman-4.5.1
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2023-07-17T02:46:49Z"
+  labels:
+    app: powertracker-1
+  name: powertracker-1
+spec:
+  containers:
+  - args:
+    - postgres
+    env:
+    - name: POSTGRES_PASSWORD
+      value: changeme
+    - name: POSTGRES_DB
+      value: powertracker
+    - name: POSTGRES_USER
+      value: postgres
+    image: docker.io/library/postgres:latest
+    name: postgres-1
+    ports:
+    - containerPort: 80
+      hostIP: 127.0.0.1
+      hostPort: 8080
+    tty: true
+    volumeMounts:
+    - mountPath: /var/lib/postgresql/data
+      name: srv-powertracker-postgres-data-host-0
+  - env:
+    - name: DJANGO_DATABASE_ENGINE
+      value: django.db.backends.postgresql
+    - name: DJANGO_DATABASE_USER
+      value: postgres
+    - name: DJANGO_SUPERUSER_PASSWORD
+      value: changeme
+    - name: DJANGO_DATABASE_HOST
+      value: localhost
+    - name: DJANGO_DEBUG
+      value: "False"
+    - name: DJANGO_DATABASE_NAME
+      value: powertracker
+    - name: DJANGO_SUPERUSER_USERNAME
+      value: admin
+    - name: DJANGO_SUPERUSER_EMAIL
+      value: admin@localhost
+    - name: DJANGO_DATABASE_PASSWORD
+      value: changeme
+    - name: DJANGO_ALLOWED_HOSTS
+      value: 127.0.0.1
+    - name: DJANGO_DATABASE_PORT
+      value: "5432"
+    - name: DJANGO_SECRET_KEY
+      value: changeme
+    image: localhost/powertracker:v0
+    name: powertracker-web-1
+    tty: true
+  - args:
+    - nginx
+    - -g
+    - daemon off;
+    image: localhost/nginx:custom
+    name: nginx-1
+    tty: true
+    volumeMounts:
+    - mountPath: /home/app/staticfiles
+      name: srv-powertracker-static-host-0
+      readOnly: true
+    - mountPath: /home/app/mediafiles
+      name: srv-powertracker-media-host-1
+      readOnly: true
+  volumes:
+  - hostPath:
+      path: /srv/powertracker/postgres/data
+      type: Directory
+    name: srv-powertracker-postgres-data-host-0
+  - hostPath:
+      path: /srv/powertracker/static
+      type: Directory
+    name: srv-powertracker-static-host-0
+  - hostPath:
+      path: /srv/powertracker/media
+      type: Directory
+    name: srv-powertracker-media-host-1

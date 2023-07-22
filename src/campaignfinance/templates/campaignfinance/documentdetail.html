@@ -1,0 +1,87 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Document - {{ document }}{% endblock title %}
+
+{% block content %}
+<h3>Document</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <div class="detail-field-row">
+            <div class="detail-field-label">Document Type</div>
+            <div class="detail-field-data">{{ document.category }}</div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Document Name</div>
+            <div class="detail-field-data">{{ document.name }}</div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Filer</div>
+            <div class="detail-field-data">
+                {% if document.filer_entity %}
+                    <a href="{% url 'campaignfinance:entitydetail' document.filer_entity.uuid %}">
+                        {{ document.filer_entity }}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Officer Administering Oath</div>
+            <div class="detail-field-data">
+                {% if document.officer_oath_entity %}
+                    <a href="{% url 'campaignfinance:entitydetail' document.officer_oath_entity.uuid %}">
+                        {{ document.officer_oath_entity }}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Date Filed</div>
+            <div class="detail-field-data">{{ document.date_filed }}</div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Coverage Start Date</div>
+            <div class="detail-field-data">{{ document.coverage_start_date }}</div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Coverage End Date</div>
+            <div class="detail-field-data">{{ document.coverage_end_date }}</div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">File</div>
+            <div class="detail-field-data">
+                <a href="{{ MEDIA_URL }}{{ document.uploaded_file }}">{{ document.uploaded_file }}</a>
+            </div>
+        </div>
+    </div>
+</div>
+<h3>Reported Subtotals:</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <p>Reported Subtotals:
+        {% if document.document_reported_subtotals %}
+            <a href="{% url 'campaignfinance:reportedsubtotalsdetail' document.document_reported_subtotals.uuid %}">
+                Details
+            </a>
+        {% endif %}
+        </p>
+    </div>
+</div>
+<h3>Reported Totals</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <p>Reported Totals:
+        {% if document.document_reported_totals %}
+            <a href="{% url 'campaignfinance:reportedtotalsdetail' document.document_reported_totals.uuid %}">
+                Details
+            </a>
+        {% endif %}
+        </p>
+    </div>
+</div>
+<h3>Notes</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <p>{{ document.notes }}</p>
+    </div>
+</div>
+{% endblock %}

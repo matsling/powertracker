@@ -1,0 +1,62 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Campaigns{% endblock title %}
+
+{% block content %}
+<h3>Campaigns</h3>
+<div class="filter-options-row">
+    <form class="category-select" method="GET" action="{% url 'campaignfinance:campaignindex' %}">
+        <select name="category" id="category-select">
+        {% for name, value in filter_categories.items %}
+            <option value="{{ name }}" {% if name == request.GET.category %}selected{% endif %}>{{ name }}</option> 
+        {% endfor %}
+        </select>
+        {% if request.GET.sortby %}
+            <input type="hidden" name="sortby" value="{{ request.GET.sortby }}">
+        {% endif %}
+    </form>
+    <form class="sort-select" method="GET" action="{% url 'campaignfinance:campaignindex' %}">
+        <select name="sortby" id="sortby-select">
+            {% for name, value in sort_by_fields.items %}
+            <option value="{{ name }}" {% if name == request.GET.sortby %}selected{% endif %}>{{ name }}</option>
+            {% endfor %}
+        </select>
+        {% if request.GET.category %}
+            <input type="hidden" name="category" value="{{ request.GET.category }}">
+        {% endif %}
+    </form>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>Campaign Name</th>
+            <th>Registration Date</th>
+            <th>Campaign Type</th>
+            <th>Office Sought</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if campaign_list %}
+            {% for campaign in campaign_list %}
+            <tr onclick="location.href='{% url 'campaignfinance:campaigndetail' campaign.uuid %}';">
+                <td>{{ campaign }}</td>
+                <td>{{ campaign.registration_date }}</td>
+                <td>{{ campaign.category.name }}</td>
+                {% if campaign.office_sought %}
+                    <td>{{ campaign.office_sought }}</td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

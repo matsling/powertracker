@@ -1,0 +1,42 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Former Office Holders{% endblock title %}
+
+{% block content %}
+<h3>Former Office Holders</h3>
+<div class="filter-options-row">
+    <form class="sort-select" method="GET" action="{% url 'campaignfinance:formerofficeholderindex' %}">
+        <select name="sortby" id="sortby-select">
+            {% for name, value in sort_by_fields.items %}
+            <option value="{{ name }}" {% if name == request.GET.sortby %}selected{% endif %}>{{ name }}</option>
+            {% endfor %}
+        </select>
+        {% if request.GET.category %}
+            <input type="hidden" name="category" value="{{ request.GET.category }}">
+        {% endif %}
+    </form>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>Office</th>
+            <th>Former Holder</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if former_office_holder_list %}
+            {% for former_office_holder in former_office_holder_list %}
+            <tr onclick="location.href='{% url 'campaignfinance:entitydetail' former_office_holder.entity.uuid %}';">
+                <td>{{ former_office_holder.office }}</td>
+                <td>{{ former_office_holder.entity }}</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+                <td></td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock content %}

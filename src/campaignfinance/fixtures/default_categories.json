@@ -1,0 +1,1506 @@
+[
+    {
+        "model": "campaignfinance.entitycategory",
+        "pk": 1,
+        "fields": {
+            "name": "individual"
+        }
+    },
+    {
+        "model": "campaignfinance.entitycategory",
+        "pk": 2,
+        "fields": {
+            "name": "political action committee"
+        }
+    },
+    {
+        "model": "campaignfinance.entitycategory",
+        "pk": 3,
+        "fields": {
+            "name": "corporation"
+        }
+    },
+    {
+        "model": "campaignfinance.entitycategory",
+        "pk": 4,
+        "fields": {
+            "name": "labor union"
+        }
+    },
+    {
+        "model": "campaignfinance.entitycategory",
+        "pk": 5,
+        "fields": {
+            "name": "republican party"
+        }
+    },
+    {
+        "model": "campaignfinance.entitycategory",
+        "pk": 6,
+        "fields": {
+            "name": "democratic party"
+        }
+    },
+    {
+        "model": "campaignfinance.entitycategory",
+        "pk": 7,
+        "fields": {
+            "name": "third party"
+        }
+    },
+    {
+        "model": "campaignfinance.entitycategory",
+        "pk": 8,
+        "fields": {
+            "name": "religious"
+        }
+    },
+    {
+        "model": "campaignfinance.entitycategory",
+        "pk": 9,
+        "fields": {
+            "name": "removed"
+        }
+    },
+    {
+        "model": "campaignfinance.entitycategory",
+        "pk": 10,
+        "fields": {
+            "name": "military"
+        }
+    },
+    {
+        "model": "campaignfinance.entitycategory",
+        "pk": 11,
+        "fields": {
+            "name": "government"
+        }
+    },
+    {
+        "model": "campaignfinance.relationshipcategory",
+        "pk": 1,
+        "fields": {
+            "name": "current owner"
+        }
+    },
+    {
+        "model": "campaignfinance.relationshipcategory",
+        "pk": 2,
+        "fields": {
+            "name": "former owner"
+        }
+    },
+    {
+        "model": "campaignfinance.relationshipcategory",
+        "pk": 3,
+        "fields": {
+            "name": "current employee"
+        }
+    },
+    {
+        "model": "campaignfinance.relationshipcategory",
+        "pk": 4,
+        "fields": {
+            "name": "former employee"
+        }
+    },
+    {
+        "model": "campaignfinance.relationshipcategory",
+        "pk": 5,
+        "fields": {
+            "name": "current spouse"
+        }
+    },
+    {
+        "model": "campaignfinance.relationshipcategory",
+        "pk": 6,
+        "fields": {
+            "name": "former spouse"
+        }
+    },
+    {
+        "model": "campaignfinance.relationshipcategory",
+        "pk": 7,
+        "fields": {
+            "name": "family"
+        }
+    },
+    {
+        "model": "campaignfinance.relationshipcategory",
+        "pk": 8,
+        "fields": {
+            "name": "member"
+        }
+    },
+    {
+        "model": "campaignfinance.transactioncategory",
+        "pk": 1,
+        "fields": {
+            "name": "contribution"
+        }
+    },
+    {
+        "model": "campaignfinance.transactioncategory",
+        "pk": 2,
+        "fields": {
+            "name": "expenditure"
+        }
+    },
+    {
+        "model": "campaignfinance.transactioncategory",
+        "pk": 3,
+        "fields": {
+            "name": "loan"
+        }
+    },
+    {
+        "model": "campaignfinance.transactioncategory",
+        "pk": 4,
+        "fields": {
+            "name": "refund"
+        }
+    },
+    {
+        "model": "campaignfinance.documentcategory",
+        "pk": 1,
+        "fields": {
+            "name": "30 days before election"
+        }
+    },
+    {
+        "model": "campaignfinance.documentcategory",
+        "pk": 2,
+        "fields": {
+            "name": "8 days before elections"
+        }
+    },
+    {
+        "model": "campaignfinance.documentcategory",
+        "pk": 3,
+        "fields": {
+            "name": "modified reporting declaration"
+        }
+    },
+    {
+        "model": "campaignfinance.documentcategory",
+        "pk": 4,
+        "fields": {
+            "name": "correction"
+        }
+    },
+    {
+        "model": "campaignfinance.documentcategory",
+        "pk": 5,
+        "fields": {
+            "name": "final report"
+        }
+    },
+    {
+        "model": "campaignfinance.documentcategory",
+        "pk": 6,
+        "fields": {
+            "name": "january 15 semi annual"
+        }
+    },
+    {
+        "model": "campaignfinance.documentcategory",
+        "pk": 7,
+        "fields": {
+            "name": "july 15 semi annual"
+        }
+    },
+    {
+        "model": "campaignfinance.documentcategory",
+        "pk": 8,
+        "fields": {
+            "name": "runoff"
+        }
+    },
+    {
+        "model": "campaignfinance.documentcategory",
+        "pk": 9,
+        "fields": {
+            "name": "15 days after treasurer appointment"
+        }
+    },
+    {
+        "model": "campaignfinance.documentcategory",
+        "pk": 10,
+        "fields": {
+            "name": "10 days after treasurer termination"
+        }
+    },
+    {
+        "model": "campaignfinance.documentcategory",
+        "pk": 11,
+        "fields": {
+            "name": "dissolution"
+        }
+    },
+    {
+        "model": "campaignfinance.electioncategory",
+        "pk": 1,
+        "fields": {
+            "name": "primary"
+        }
+    },
+    {
+        "model": "campaignfinance.electioncategory",
+        "pk": 2,
+        "fields": {
+            "name": "general"
+        }
+    },
+    {
+        "model": "campaignfinance.electioncategory",
+        "pk": 3,
+        "fields": {
+            "name": "runoff"
+        }
+    },
+    {
+        "model": "campaignfinance.electioncategory",
+        "pk": 4,
+        "fields": {
+            "name": "special"
+        }
+    },
+    {
+        "model": "campaignfinance.electioncategory",
+        "pk": 5,
+        "fields": {
+            "name": "other"
+        }
+    },
+    {
+        "model": "campaignfinance.campaigncategory",
+        "pk": 1,
+        "fields": {
+            "name": "candidate"
+        }
+    },
+    {
+        "model": "campaignfinance.campaigncategory",
+        "pk": 2,
+        "fields": {
+            "name": "ballot initiative"
+        }
+    },
+    {
+        "model": "campaignfinance.campaigncategory",
+        "pk": 3,
+        "fields": {
+            "name": "recall"
+        }
+    },
+    {
+        "model": "campaignfinance.industrysector",
+        "pk": 1,
+        "fields": {
+            "name": "agribusiness"
+        }
+    },
+    {
+        "model": "campaignfinance.industrysector",
+        "pk": 2,
+        "fields": {
+            "name": "communications and electronics"
+        }
+    },
+    {
+        "model": "campaignfinance.industrysector",
+        "pk": 3,
+        "fields": {
+            "name": "construction"
+        }
+    },
+    {
+        "model": "campaignfinance.industrysector",
+        "pk": 4,
+        "fields": {
+            "name": "defense"
+        }
+    },
+    {
+        "model": "campaignfinance.industrysector",
+        "pk": 5,
+        "fields": {
+            "name": "energy and natural resources"
+        }
+    },
+    {
+        "model": "campaignfinance.industrysector",
+        "pk": 6,
+        "fields": {
+            "name": "finance, insurance, and real estate"
+        }
+    },
+    {
+        "model": "campaignfinance.industrysector",
+        "pk": 7,
+        "fields": {
+            "name": "health"
+        }
+    },
+    {
+        "model": "campaignfinance.industrysector",
+        "pk": 8,
+        "fields": {
+            "name": "ideological and single-issue"
+        }
+    },
+    {
+        "model": "campaignfinance.industrysector",
+        "pk": 9,
+        "fields": {
+            "name": "labor"
+        }
+    },
+    {
+        "model": "campaignfinance.industrysector",
+        "pk": 10,
+        "fields": {
+            "name": "lawyers and lobbyists"
+        }
+    },
+    {
+        "model": "campaignfinance.industrysector",
+        "pk": 11,
+        "fields": {
+            "name": "misc business"
+        }
+    },
+    {
+        "model": "campaignfinance.industrysector",
+        "pk": 12,
+        "fields": {
+            "name": "other"
+        }
+    },
+    {
+        "model": "campaignfinance.industrysector",
+        "pk": 13,
+        "fields": {
+            "name": "transportation"
+        }
+    },
+    {
+        "model": "campaignfinance.industrysector",
+        "pk": 14,
+        "fields": {
+            "name": "government"
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 1,
+        "fields": {
+            "name": "crop production and basic processing",
+            "sector": 1
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 2,
+        "fields": {
+            "name": "vegetable and fruits",
+            "sector": 1
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 3,
+        "fields": {
+            "name": "sugar cane and sugar beets",
+            "sector": 1
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 4,
+        "fields": {
+            "name": "tobacco",
+            "sector": 1
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 5,
+        "fields": {
+            "name": "dairy",
+            "sector": 1
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 6,
+        "fields": {
+            "name": "poultry and eggs",
+            "sector": 1
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 7,
+        "fields": {
+            "name": "livestock",
+            "sector": 1
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 8,
+        "fields": {
+            "name": "agricultural services and products",
+            "sector": 1
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 9,
+        "fields": {
+            "name": "farm bureaus",
+            "sector": 1
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 10,
+        "fields": {
+            "name": "food processing and sales",
+            "sector": 1
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 11,
+        "fields": {
+            "name": "food products manufacturing",
+            "sector": 1
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 12,
+        "fields": {
+            "name": "food stores",
+            "sector": 1
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 13,
+        "fields": {
+            "name": "meat processing and products",
+            "sector": 1
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 14,
+        "fields": {
+            "name": "forestry and forest products",
+            "sector": 1
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 15,
+        "fields": {
+            "name": "printing and publishing",
+            "sector": 2
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 16,
+        "fields": {
+            "name": "books, magazines, and newspapers",
+            "sector": 2
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 17,
+        "fields": {
+            "name": "tv, movies, and music",
+            "sector": 2
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 18,
+        "fields": {
+            "name": "cable and satellite tv production and distribution",
+            "sector": 2
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 19,
+        "fields": {
+            "name": "commercial tv and radio stations",
+            "sector": 2
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 20,
+        "fields": {
+            "name": "motion picture production and distribution",
+            "sector": 2
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 21,
+        "fields": {
+            "name": "recorded music and music production",
+            "sector": 2
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 22,
+        "fields": {
+            "name": "tv production",
+            "sector": 2
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 23,
+        "fields": {
+            "name": "telephone utilities",
+            "sector": 2
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 24,
+        "fields": {
+            "name": "telecom services and equipment",
+            "sector": 2
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 25,
+        "fields": {
+            "name": "electronics manufacturing and equipment",
+            "sector": 2
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 26,
+        "fields": {
+            "name": "computer software",
+            "sector": 2
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 27,
+        "fields": {
+            "name": "internet",
+            "sector": 2
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 28,
+        "fields": {
+            "name": "general contractors",
+            "sector": 3
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 29,
+        "fields": {
+            "name": "home builders",
+            "sector": 3
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 30,
+        "fields": {
+            "name": "special trade contractors",
+            "sector": 3
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 31,
+        "fields": {
+            "name": "construction services",
+            "sector": 3
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 32,
+        "fields": {
+            "name": "architectural services",
+            "sector": 3
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 33,
+        "fields": {
+            "name": "building materials and equipment",
+            "sector": 3
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 34,
+        "fields": {
+            "name": "defense aerospace",
+            "sector": 4
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 35,
+        "fields": {
+            "name": "defense electronics",
+            "sector": 4
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 36,
+        "fields": {
+            "name": "miscellaneous defense",
+            "sector": 4
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 37,
+        "fields": {
+            "name": "oil and gas",
+            "sector": 5
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 38,
+        "fields": {
+            "name": "natural gas pipelines",
+            "sector": 5
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 39,
+        "fields": {
+            "name": "mining",
+            "sector": 5
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 40,
+        "fields": {
+            "name": "coal mining",
+            "sector": 5
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 41,
+        "fields": {
+            "name": "alternative energy production and services",
+            "sector": 5
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 42,
+        "fields": {
+            "name": "electric utilities",
+            "sector": 5
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 43,
+        "fields": {
+            "name": "waste management",
+            "sector": 5
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 44,
+        "fields": {
+            "name": "commercial banks",
+            "sector": 6
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 45,
+        "fields": {
+            "name": "savings and loans",
+            "sector": 6
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 46,
+        "fields": {
+            "name": "credit unions",
+            "sector": 6
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 47,
+        "fields": {
+            "name": "finance and credit companies",
+            "sector": 6
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 48,
+        "fields": {
+            "name": "student loan companies",
+            "sector": 6
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 49,
+        "fields": {
+            "name": "payday lenders",
+            "sector": 6
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 50,
+        "fields": {
+            "name": "securities and investment",
+            "sector": 6
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 51,
+        "fields": {
+            "name": "venture capital",
+            "sector": 6
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 52,
+        "fields": {
+            "name": "real estate",
+            "sector": 6
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 53,
+        "fields": {
+            "name": "property management",
+            "sector": 6
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 54,
+        "fields": {
+            "name": "mortgage bankers and brokers",
+            "sector": 6
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 55,
+        "fields": {
+            "name": "real estate agents",
+            "sector": 6
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 56,
+        "fields": {
+            "name": "cooperative",
+            "sector": 14
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 57,
+        "fields": {
+            "name": "accountants",
+            "sector": 6
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 58,
+        "fields": {
+            "name": "misc finance",
+            "sector": 6
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 59,
+        "fields": {
+            "name": "health professionals",
+            "sector": 7
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 60,
+        "fields": {
+            "name": "chiropractors",
+            "sector": 7
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 61,
+        "fields": {
+            "name": "dentists",
+            "sector": 7
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 62,
+        "fields": {
+            "name": "nurses",
+            "sector": 7
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 63,
+        "fields": {
+            "name": "hospitals and nursing homes",
+            "sector": 7
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 64,
+        "fields": {
+            "name": "health services and HMOs",
+            "sector": 7
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 65,
+        "fields": {
+            "name": "pharmaceuticals and health products",
+            "sector": 7
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 66,
+        "fields": {
+            "name": "medical supplies",
+            "sector": 7
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 67,
+        "fields": {
+            "name": "nutritional and dietary supplements",
+            "sector": 7
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 68,
+        "fields": {
+            "name": "pharmaceutical manufacturing",
+            "sector": 7
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 69,
+        "fields": {
+            "name": "republican and conservative",
+            "sector": 8
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 70,
+        "fields": {
+            "name": "democratic and liberal",
+            "sector": 8
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 71,
+        "fields": {
+            "name": "leadership PACs",
+            "sector": 8
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 72,
+        "fields": {
+            "name": "democratic leadership PACs",
+            "sector": 8
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 73,
+        "fields": {
+            "name": "republican leadership PACs",
+            "sector": 8
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 74,
+        "fields": {
+            "name": "foreign and defense policy",
+            "sector": 8
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 75,
+        "fields": {
+            "name": "pro-Israel",
+            "sector": 8
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 76,
+        "fields": {
+            "name": "women's issues",
+            "sector": 8
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 77,
+        "fields": {
+            "name": "human rights",
+            "sector": 8
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 78,
+        "fields": {
+            "name": "LGBTQIA rights and issues",
+            "sector": 8
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 79,
+        "fields": {
+            "name": "environment",
+            "sector": 8
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 80,
+        "fields": {
+            "name": "gun control",
+            "sector": 8
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 81,
+        "fields": {
+            "name": "gun rights",
+            "sector": 8
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 82,
+        "fields": {
+            "name": "abortion policy and anti-abortion",
+            "sector": 8
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 83,
+        "fields": {
+            "name": "abortion policy and pro-abortion rights",
+            "sector": 8
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 84,
+        "fields": {
+            "name": "candidate committees",
+            "sector": 8
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 85,
+        "fields": {
+            "name": "republican candidate committees",
+            "sector": 8
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 86,
+        "fields": {
+            "name": "democratic candidate committees",
+            "sector": 8
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 87,
+        "fields": {
+            "name": "building trade unions",
+            "sector": 9
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 88,
+        "fields": {
+            "name": "industrial unions",
+            "sector": 9
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 89,
+        "fields": {
+            "name": "transportation unions",
+            "sector": 9
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 90,
+        "fields": {
+            "name": "air transport unions",
+            "sector": 9
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 91,
+        "fields": {
+            "name": "public sector unions",
+            "sector": 9
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 92,
+        "fields": {
+            "name": "postal unions",
+            "sector": 9
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 93,
+        "fields": {
+            "name": "teacher unions",
+            "sector": 9
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 94,
+        "fields": {
+            "name": "misc unions",
+            "sector": 9
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 95,
+        "fields": {
+            "name": "lawyers and law firms",
+            "sector": 10
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 96,
+        "fields": {
+            "name": "lobbyists",
+            "sector": 10
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 97,
+        "fields": {
+            "name": "business associations",
+            "sector": 11
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 98,
+        "fields": {
+            "name": "food and beverage",
+            "sector": 11
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 99,
+        "fields": {
+            "name": "restaurants and drinking establishments",
+            "sector": 11
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 100,
+        "fields": {
+            "name": "beer, wine, and liquor",
+            "sector": 11
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 101,
+        "fields": {
+            "name": "retail sales",
+            "sector": 11
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 102,
+        "fields": {
+            "name": "misc services",
+            "sector": 11
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 103,
+        "fields": {
+            "name": "funeral services",
+            "sector": 11
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 104,
+        "fields": {
+            "name": "business services",
+            "sector": 11
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 105,
+        "fields": {
+            "name": "advertising and public relations",
+            "sector": 11
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 106,
+        "fields": {
+            "name": "recreation and live entertainment",
+            "sector": 11
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 107,
+        "fields": {
+            "name": "professional sports, sports arenas and related equipment and services",
+            "sector": 11
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 108,
+        "fields": {
+            "name": "amusement, recreation, and leisure services",
+            "sector": 11
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 109,
+        "fields": {
+            "name": "performing arts",
+            "sector": 11
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 110,
+        "fields": {
+            "name": "publishing",
+            "sector": 11
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 111,
+        "fields": {
+            "name": "casinos and gambling",
+            "sector": 11
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 112,
+        "fields": {
+            "name": "indian gaming",
+            "sector": 11
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 113,
+        "fields": {
+            "name": "lodging and tourism",
+            "sector": 11
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 114,
+        "fields": {
+            "name": "marijuana",
+            "sector": 11
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 115,
+        "fields": {
+            "name": "for-profit prisons",
+            "sector": 11
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 116,
+        "fields": {
+            "name": "chemical and related manufacturing",
+            "sector": 11
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 117,
+        "fields": {
+            "name": "steel production",
+            "sector": 11
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 118,
+        "fields": {
+            "name": "misc manufacturing and distributing",
+            "sector": 11
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 119,
+        "fields": {
+            "name": "textiles",
+            "sector": 11
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 120,
+        "fields": {
+            "name": "non-profits, foundations and philanthropists",
+            "sector": 12
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 121,
+        "fields": {
+            "name": "civil servants and public officials",
+            "sector": 12
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 122,
+        "fields": {
+            "name": "education",
+            "sector": 12
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 123,
+        "fields": {
+            "name": "for-profit education",
+            "sector": 12
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 124,
+        "fields": {
+            "name": "clergy and religious organizations",
+            "sector": 12
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 125,
+        "fields": {
+            "name": "retired",
+            "sector": 12
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 126,
+        "fields": {
+            "name": "air transport",
+            "sector": 13
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 127,
+        "fields": {
+            "name": "airlines",
+            "sector": 13
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 128,
+        "fields": {
+            "name": "automotive",
+            "sector": 13
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 129,
+        "fields": {
+            "name": "auto manufacturers",
+            "sector": 13
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 130,
+        "fields": {
+            "name": "car dealers",
+            "sector": 13
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 131,
+        "fields": {
+            "name": "import car dealers",
+            "sector": 13
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 132,
+        "fields": {
+            "name": "trucking",
+            "sector": 13
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 133,
+        "fields": {
+            "name": "railroads",
+            "sector": 13
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 134,
+        "fields": {
+            "name": "sea transport",
+            "sector": 13
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 135,
+        "fields": {
+            "name": "cruise ships and lines",
+            "sector": 13
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 136,
+        "fields": {
+            "name": "municipal",
+            "sector": 14
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 137,
+        "fields": {
+            "name": "county",
+            "sector": 14
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 138,
+        "fields": {
+            "name": "state",
+            "sector": 14
+        }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 139,
+        "fields": {
+            "name": "federal",
+            "sector": 14
+        }
+    }
+]

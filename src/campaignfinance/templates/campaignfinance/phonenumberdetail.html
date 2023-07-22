@@ -1,0 +1,44 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Phone Number - {{ phonenumber }}{% endblock title %}
+
+{% block content %}
+<h3>Phone Number</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <div class="detail-field-row">
+            <div class="detail-field-label">Phone Number</div>
+            <div class="detail-field-data">{{ phonenumber }}</div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Owner</div>
+            <div class="detail-field-data">
+                {% if phonenumber.owner %}
+                    {{ phonenumber.owner }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<h3>Related Persons & Organizations</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Associated Entities</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if phonenumber.associated_entities.exists %}
+            {% for entity in phonenumber.associated_entities.all %}
+                <tr onclick="location.href='{% url 'campaignfinance:entitydetail' entity.uuid %}';">
+                    <td>{{ entity }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Industry Sectors{% endblock title %}
+
+{% block content %}
+<h3>Industry Sectors</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Industry Sector</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if industry_sector_list %}
+            {% for industry_sector in industry_sector_list %}
+            <tr onclick="location.href='{% url 'campaignfinance:industrysectordetail' industry_sector.uuid %}';">
+                <td>{{ industry_sector }}</a></td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

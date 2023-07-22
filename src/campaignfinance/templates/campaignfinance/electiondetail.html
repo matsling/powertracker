@@ -1,0 +1,57 @@
+{% extends 'campaignfinance/base.html' %}
+
+{% block title %}Election - {{ election.date }}{% endblock title %}
+
+{% block content %}
+<h3>Election</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <div class="detail-field-row">
+            <div class="detail-field-label">Date</div>
+            <div class="detail-field-data">{{ election.date }}</div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Government/Jurisdiction</div>
+            <div class="detail-field-data">
+                {% if election.government_entity %}
+                    <a href="{% url 'campaignfinance:entitydetail' election.government_entity.uuid %}">
+                        {{ election.government_entity }}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Type</div>
+            <div class="detail-field-data">{{ election.category }}</div>
+        </div>
+    </div>
+</div>
+<h3>Notes</h3>
+<div class="detail-column">
+    <div class="detail-box">
+        <p>{{ election.notes }}</p>
+    </div>
+</div>
+<h3>Campaigns</h3>
+<table>
+    <thead>
+        <th>Campaign Name</th>
+        <th>Office Sought</th>
+    </thead>
+    <tbody>
+        {% if election.election_campaigns.exists %}
+            {% for campaign in election.election_campaigns.all %}
+                <tr onclick="location.href='{% url 'campaignfinance:campaigndetail' campaign.uuid %}';">
+                    <td>{{ campaign }}</td>
+                    <td>{{ campaign.office_sought }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>No data found.</td>
+                <td></td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}
