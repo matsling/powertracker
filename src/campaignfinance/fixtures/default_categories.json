@@ -77,6 +77,13 @@
         }
     },
     {
+        "model": "campaignfinance.entitycategory",
+        "pk": 12,
+        "fields" : {
+            "name": "committee"
+        }
+    },
+    {
         "model": "campaignfinance.relationshipcategory",
         "pk": 1,
         "fields": {

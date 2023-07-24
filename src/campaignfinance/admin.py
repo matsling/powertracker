@@ -195,7 +195,6 @@ class ElectionAdmin(EntityFilterModelAdmin):
     fieldsets = [
         (None, {'fields': ['category']}),
         ('Election Information', {'fields': ['government_entity', 'date']}),
-        ('Campaigns', {'fields': ['campaigns']}),
         ('Notes', {'fields': ['notes']})
     ]
 
