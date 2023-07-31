@@ -165,7 +165,8 @@ class CampaignAdmin(EntityFilterModelAdmin):
         (None, {'fields': ['category', 'name', 'registration_date']}),
         ('Office Information', {'fields': ['office_sought']}),
         ('Campaign Members', {'fields': ['candidate_entity', 'treasurer_entity', 'committee_entity']}),
-        ('Notes', {'fields': ['notes']})
+        ('Notes', {'fields': ['notes']}),
+        ('Elections' , {'fields': ['election']})
     ]
 
     list_display = ['name',
