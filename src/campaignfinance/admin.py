@@ -44,6 +44,8 @@ admin.site.register(IndustrySector, IndustrySectorAdmin)
 class IndustryAdmin(admin.ModelAdmin):
     fields = ['name', 'sector']
 
+    search_fields = ['name']
+
 
 admin.site.register(Industry, IndustryAdmin)
 
@@ -55,6 +57,10 @@ class EntityAdmin(admin.ModelAdmin):
         ('Employment', {'fields': ['occupation', 'industry']}),
         ('Notes', {'fields': ['notes']})
     ]
+
+    search_fields = ['__name__']
+
+    autocomplete_fields = ['industry']
 
 
 admin.site.register(Entity, EntityAdmin)
@@ -78,6 +84,8 @@ class ExternalIdAdmin(EntityFilterModelAdmin):
     ]
 
     list_display = ('reporting_agency', 'reported_entity', 'number')
+
+    autocomplete_fields = ['parent_entity', 'child_entity']
 
 
 admin.site.register(ExternalId, ExternalIdAdmin)
@@ -104,6 +112,8 @@ class RelationshipAdmin(admin.ModelAdmin):
     ]
 
     list_display = ('category', 'parent_entity', 'child_entity')
+
+    autocomplete_fields = ['parent_entity', 'child_entity']
 
 
 admin.site.register(Relationship, RelationshipAdmin)
@@ -138,6 +148,10 @@ class OfficeAdmin(EntityFilterModelAdmin):
 
     list_display = ('name', 'government_entity', 'office_holder')
 
+    search_fields = ['name']
+
+    autocomplete_fields = ['government_entity', 'holder_entity']
+
 
 admin.site.register(Office, OfficeAdmin)
 
@@ -149,6 +163,8 @@ class FormerOfficeHolderAdmin(admin.ModelAdmin):
     ]
 
     list_display = ('office', 'entity')
+
+    autocomplete_fields = ['office', 'entity']
 
 
 admin.site.register(FormerOfficeHolder, FormerOfficeHolderAdmin)
@@ -177,6 +193,10 @@ class CampaignAdmin(EntityFilterModelAdmin):
                     'office_sought',
     ]
 
+    search_fields = ['name']
+
+    autocomplete_fields = ['election', 'office_sought', 'candidate_entity', 'treasurer_entity', 'committee_entity']
+
 
 admin.site.register(Campaign, CampaignAdmin)
 
@@ -200,6 +220,10 @@ class ElectionAdmin(EntityFilterModelAdmin):
     ]
 
     list_display = ['date', 'government_entity', 'category']
+
+    search_fields = ['date']
+
+    autocomplete_fields = ['government_entity']
 
 
 admin.site.register(Election, ElectionAdmin)
@@ -227,6 +251,10 @@ class DocumentAdmin(EntityFilterModelAdmin):
 
     list_display = ['name', 'category', 'date_filed']
 
+    search_fields = ['name']
+
+    autocomplete_fields = ['filer_entity', 'officer_oath_entity']
+
 
 admin.site.register(Document, DocumentAdmin)
 
@@ -251,6 +279,8 @@ class ReportedTotalsAdmin(admin.ModelAdmin):
     ]
 
     list_display = ['document', 'contributions', 'expenditures']
+
+    autocomplete_fields = ['document']
 
 
 admin.site.register(ReportedTotals, ReportedTotalsAdmin)
@@ -294,6 +324,8 @@ class ReportedSubtotalsAdmin(admin.ModelAdmin):
         'expenditures_from_contributions',
     ]
 
+    autocomplete_fields = ['document']
+
 
 admin.site.register(ReportedSubtotals, ReportedSubtotalsAdmin)
 
@@ -325,6 +357,8 @@ class TransactionAdmin(EntityFilterModelAdmin):
     ]
 
     list_display = ['recorded_date', 'payer_entity', 'payee_entity', 'amount']
+
+    autocomplete_fields = ['campaign', 'payer_entity', 'payee_entity', 'document']
 
 
 admin.site.register(Transaction, TransactionAdmin)
@@ -368,6 +402,8 @@ class AddressAdmin(admin.ModelAdmin):
         'zip_code',
     ]
 
+    autocomplete_fields = ['residents','owners']
+
 
 admin.site.register(Address, AddressAdmin)
 
@@ -388,6 +424,8 @@ class PhoneNumberAdmin(admin.ModelAdmin):
         'owner',
     ]
 
+    autocomplete_fields = ['owner', 'associated_entities']
+
 
 admin.site.register(PhoneNumber, PhoneNumberAdmin)
 
@@ -404,6 +442,8 @@ class EmailAdmin(admin.ModelAdmin):
         'address',
         'owner',
     ]
+
+    autocomplete_fields = ['owner', 'associated_entities']
 
 
 admin.site.register(Email, EmailAdmin)
@@ -422,6 +462,8 @@ class WebsiteAdmin(admin.ModelAdmin):
         'owner',
     ]
 
+    autocomplete_fields = ['owner', 'associated_entities']
+
 
 admin.site.register(Website, WebsiteAdmin)
 
@@ -434,6 +476,8 @@ class AssumedNameAdmin(admin.ModelAdmin):
     ]
 
     list_display = ['name']
+
+    autocomplete_fields = ['associated_entities']
 
 
 admin.site.register(AssumedName, AssumedNameAdmin)

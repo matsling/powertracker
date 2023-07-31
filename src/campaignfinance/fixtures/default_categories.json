@@ -308,6 +308,20 @@
         }
     },
     {
+        "model": "campaignfinance.addresscategory",
+        "pk": 1,
+        "fields": {
+            "name": "building"
+        }
+    },
+    {
+        "model": "campaignfinance.addresscategory",
+        "pk": 2,
+        "fields": {
+            "name": "po box"
+        }
+    },
+    {
         "model": "campaignfinance.industrysector",
         "pk": 2,
         "fields": {

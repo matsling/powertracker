@@ -11,6 +11,10 @@
     --font-color-red: #da3c18;
 }
 
+title {
+    text-transform: capitalize;
+}
+
 body, html {
     margin: 0;
     padding: 0;
@@ -162,6 +166,7 @@ h3 {
     text-align: left;
     color: var(--color-brand-secondary);
     text-decoration: underline;
+    text-transform: capitalize;
 }
 
 .filter-options-row {
