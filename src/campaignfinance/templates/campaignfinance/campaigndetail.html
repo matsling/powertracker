@@ -58,6 +58,16 @@
                 {% endif %}
             </div>
         </div>
+        <div class="detail-field-row">
+            <div class="detail-field-label">Election</div>
+            <div class="detail-field-data">
+                {% if campaign.election %}
+                    <a href="{% url 'campaignfinance:electiondetail' campaign.election.uuid %}">
+                        {{ campaign.election.date }}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
     </div>
 </div>
 <h3>Notes</h3>
@@ -66,30 +76,6 @@
         <p>{{ campaign.notes }}</p>
     </div>
 </div>
-<h3>Elections</h3>
-<table>
-    <thead>
-        <tr>
-            <th>Election Date</th>
-            <th>Election Type</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% if campaign.election_campaigns.exists %}
-            {% for election in campaign.election_campaigns.all %}
-                <tr onclick="location.href='{% url 'campaignfinance:electiondetail' election.uuid %}';">
-                    <td>{{ election.date }}</td>
-                    <td>{{ election.category }}</td>
-                </tr>
-            {% endfor %}
-        {% else %}
-            <tr>
-                <td>No data found.</td>
-                <td></td>
-            </tr>
-        {% endif %}
-    </tbody>
-</table>
 <h3>Received Contributions</h3>
 <table>
     <thead>
