@@ -58,7 +58,7 @@ class EntityAdmin(admin.ModelAdmin):
         ('Notes', {'fields': ['notes']})
     ]
 
-    search_fields = ['__name__']
+    search_fields = ['first_name', 'middle_name', 'last_name']
 
     autocomplete_fields = ['industry']
 
