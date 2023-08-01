@@ -1523,5 +1523,13 @@
             "name": "federal",
             "sector": 14
         }
+    },
+    {
+        "model": "campaignfinance.industry",
+        "pk": 140,
+        "fields": {
+            "name": "insurance",
+            "sector": 6
+        }
     }
 ]
