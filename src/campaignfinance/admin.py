@@ -50,12 +50,23 @@ class IndustryAdmin(admin.ModelAdmin):
 admin.site.register(Industry, IndustryAdmin)
 
 
+class AddressInLine(admin.TabularInline):
+    model = Address.owners.through
+    extra = 1
+
+    autocomplete_fields = ['address']
+
+
 class EntityAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {'fields': ['category']}),
         ('Name', {'fields': ['prefix', 'first_name', 'middle_name', 'last_name', 'suffix', 'nickname']}),
         ('Employment', {'fields': ['occupation', 'industry']}),
-        ('Notes', {'fields': ['notes']})
+        ('Notes', {'fields': ['notes']}),
+    ]
+
+    inlines = [
+        AddressInLine,
     ]
 
     search_fields = ['first_name', 'middle_name', 'last_name']
@@ -401,6 +412,8 @@ class AddressAdmin(admin.ModelAdmin):
         'state_name',
         'zip_code',
     ]
+
+    search_fields = ['building_number', 'street_name', 'unit_number', 'floor_number', 'zip_code']
 
     autocomplete_fields = ['residents','owners']
 

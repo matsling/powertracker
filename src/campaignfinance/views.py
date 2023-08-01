@@ -38,7 +38,6 @@ class EntityIndexView(generic.ListView):
         'religious': 'religious',
         'government': 'government',
         'committee': 'committee',
-        'government agency': 'agency',
     }
 
     sort_by_fields = {
