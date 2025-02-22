@@ -1,34 +1,18 @@
--gunicorn container is bound on port 8000
--postgres container port is bound on port 5432 (default)
--nginx container port is bound on port 443
-
--entire pod should only have port 443 exposed to other pods
-
--nginx proxy exposed on port 80 and 443, 80 should redirect to 443
-    -disable any type of automatic redirect if anyone goes to the server direct
-
-
 -Command Line Steps
 
         # podman network create web-network
 
         # podman pod create \
             --net web-network \
-            --name proxy-1 \
-            -p 127.0.0.1:8080:80 \
-            -p 127.0.0.1:8081:81 \
-            -p 127.0.0.1:8443:443
-
-        # podman pod create \
-            --net web-network \
-            --name powertracker-1
+            --name powertracker-1 \
+            -p 0.0.0.0:80:80
 
         # podman run -dt \
             --pod powertracker-1 \
             --name postgres-1 \
             --env-file ./postgres/postgres.env \
             -v ./postgres/data:/var/lib/postgresql/data \
-            docker.io/library/postgres:latest
+            docker.io/library/postgres:15
 
         # podman build -t powertracker:v0 ./src/
 
@@ -64,10 +48,3 @@
             -v ./static:/home/app/staticfiles:ro \
             -v ./media:/home/app/mediafiles:ro \
             localhost/nginx:custom
-
-        # podman run -dt \
-            --pod proxy-1 \
-            --name nginx-proxy-manager-1 \
-            -v ./data:/data \
-            -v ./letsencrypt:/etc/letsencrypt \
-            docker.io/jc21/nginx-proxy-manager:latest
