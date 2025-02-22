@@ -4,7 +4,7 @@ Campaign financing tracking from local to national. Live example at https://sana
 ![alt text](https://raw.githubusercontent.com/matsling/powertracker/refs/heads/main/example.png)
 
 ## Description
-Powertracker started as a way for me to digitize my local city campaign finance reports which were still hand written documents scanned as PDFs. However, the database design has been setup so data from any elections at any level from municipal up to national can be added in. And connections created between the people giving money, recieving money, and their relationships. It allows one to move through connections between donors to map power structures. Follow the money.
+Powertracker started as a way for me to digitize my local city campaign finance reports which were still hand written documents scanned as PDFs. However, the database design has been setup so data from any elections at any level from municipal up to national can be added in. And connections created between the people giving money, receiving  money, and their relationships. It allows one to move through connections between donors to map power structures. Follow the money.
 
 The database is broken down so everything should only exist in one place. Relying on linking people, campaigns, and money together. And if you were to view one page, you can click on any of the linking data to follow the money and relationships through. Almost any piece of data can be a clue into power relations, from property ownership to industries.
 
@@ -16,7 +16,7 @@ The database is broken down so everything should only exist in one place. Relyin
 - Elections: List of elections for different jurisdiction.
 - Email Addresses: Emails from source documents.
 - Entities: Any individual, corporation, government, or other organization.
-- External IDs: IDs that have been assigned by an external agency like TEC or the IRS.
+- External IDs: IDs that have been assigned by an external agency like FEC or the IRS.
 - Former Office Holders: A list of former office holders and the office they held.
 - Industries: Specific categories of industry.
 - Industry Sectors: Broad categories of industries.
